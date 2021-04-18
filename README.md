@@ -38,3 +38,24 @@ session    include	postlogin
 - Второе поле косоли - tty, pst/X и т.д.  
 - Третье поле имена, группы 
 - Четвертое поле, время ограничения. В данный момент - понедельник - пятница (Wk) с восьми утра до пяти вечера (0800-1700).
+
+
+### Дать пользователю права работать с докером и возможность перезапуска докер сервиса
+
+- Установим и запустим docker:
+
+ ````
+  [root@pam ~]# yum install -y yum-utils
+[root@pam ~]# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+[root@pam ~]# yum install -y docker-ce docker-ce-cli containerd.io
+[root@pam ~]# systemctl enable --now docker
+[root@pam ~]# systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
+   Active: active (running) since Пн 2020-05-18 05:45:22 UTC; 48s ago
+     Docs: https://docs.docker.com
+ Main PID: 5300 (dockerd)
+   CGroup: /system.slice/docker.service
+           └─5300 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/contain...
+  ````
+  
